@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-group">
+          <label for="booktitle">Book Title (Max length of 30 characters)</label>
+          <input type="text" id="booktitle" class="form-control" ngModel name="booktitle" required maxlength="30"> 
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select name="category" id="category" class="form-control" ngModel required>
+            <option value="drama">Drama</option>
+            <option value="comedy">Comdey</option>
+            <option value="sport">Sport</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="desc">Book Description</label>
+          <textarea class="form-control" rows="5" id="desc" ngModel name="desc" required></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
+      </form>
+    </div>
+  </div>
+  <div class="row" *ngIf="submitted">
+    <div class="col-xs-12">
+      <h3>Your book has been added!</h3>
+      <p>Book title: {{book.booktitle}}</p>
+      <p>Category: {{book.category}}</p>
+      <p>Description: {{book.desc}}</p>
+    </div>
+  </div>
+</div>

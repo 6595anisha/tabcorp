@@ -5,12 +5,16 @@ import {FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
+import {BookfromComponent} from './bookfrom/bookfrom.component';
+import {BooklistComponent} from './booklist/booklist.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    BookfromComponent,
+    BooklistComponent
 
   ],
   imports: [
