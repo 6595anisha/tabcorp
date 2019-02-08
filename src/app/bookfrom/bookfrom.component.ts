@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ServerService } from '../server.service';
 
 @Component({
   selector: 'app-bookfrom',
@@ -9,25 +10,39 @@ import { NgForm } from '@angular/forms';
 export class BookfromComponent{
   @ViewChild('f') bookform:NgForm;
   book={
-    booktitle:'',
+    title:'',
     category:'',
     desc:''
   }
   submitted= false;
+  booksarray: Array<Object>=[];
 
-  // onSubmit(from: NgForm){
-  //   console.log(from);
-  // }
+  constructor(private serverservice: ServerService){}
+
 
   onSubmit(form:NgForm){
-    console.log(this.bookform);
+    
     this.submitted=true;
-    this.book.booktitle=this.bookform.value.booktitle;
+    this.book.title=this.bookform.value.title;
     this.book.category=this.bookform.value.category;
     this.book.desc=this.bookform.value.desc;
-
-    this.bookform.reset();
+    console.log(this.bookform);
+    this.booksarray.push(this.bookform.value);
+    console.log(this.booksarray);
+    this.serverservice.storebooks(this.booksarray)
+    .subscribe(
+      (response)=> console.log(response),
+      (error) =>console.log(error)
+    );
+    //this.bookform.reset();
   }
+  onSave(){
+    this.serverservice.storebooks(this.booksarray)
+    .subscribe(
+      (response)=> console.log(response),
+      (error) =>console.log(error)
+    );
 
+  }
 
 }

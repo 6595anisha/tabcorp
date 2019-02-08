@@ -19,6 +19,7 @@
           <textarea class="form-control" rows="5" id="desc" ngModel name="desc" required></textarea>
         </div>
         <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
+        <button class="btn btn-primary" (click)="onSave()">save books</button>
       </form>
     </div>
   </div>
