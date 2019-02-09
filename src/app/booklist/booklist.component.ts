@@ -11,13 +11,15 @@ import { Response } from '@angular/http';
 })
 export class BooklistComponent implements OnInit{
   constructor(private serverservice: ServerService){}
+  public products: any = [];
 
 ngOnInit(){
   this.serverservice.getbooks()
   .subscribe(
     (response: Response)=> {
       const data= response.json();
-      console.log(data);
+      this.products=data;
+      console.log(this.products);
     },
     (error) =>console.log(error)
   );

@@ -36,13 +36,5 @@ export class BookfromComponent{
     );
     //this.bookform.reset();
   }
-  onSave(){
-    this.serverservice.storebooks(this.booksarray)
-    .subscribe(
-      (response)=> console.log(response),
-      (error) =>console.log(error)
-    );
-
-  }
 
 }
